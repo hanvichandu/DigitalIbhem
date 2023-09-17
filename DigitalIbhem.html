@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <title>Registration Form</title>
+        <script>
+            function calculateTotal() {
+                var days = parseInt(document.getElementById("days").value);
+                var amentiecost = parseFloat(document.getElementById("amentiecost").value);
+                var roomRate = parseFloat(document.getElementById("roomRate").value);
+                var Advance = parseInt(document.getElementById("Advance").value);
+                var totalcost= parseFloat(document.getElementById("totalcost").value);
+                
+                if (!isNaN(days) && !isNaN(roomRate))  {
+                    var totalRoomCost = days * roomRate;
+                    document.getElementById("totalRoomCost").value = totalRoomCost.toFixed(2);
+                }
+                if (!isNaN(days) && !isNaN(amentiecost)){
+                    var totalamentiecost=days*amentiecost;
+                    document.getElementById("totalamentiecost").value = totalamentiecost.toFixed(2);
+
+                }
+                if (!isNaN(totalRoomCost) && !isNaN(totalamentiecost)){
+                    var totalcost=totalRoomCost+totalamentiecost;
+                    document.getElementById("totalcost").value = totalcost.toFixed(2);
+
+                }
+                if (!isNaN(Advance) && !isNaN(totalcost)) {
+                var balance = totalcost-Advance;
+                document.getElementById("balance").value = balance.toFixed(2);
+            }
+                
+                            
+               
+                
+            }
+        </script>
+        
+    </head>
+    <body>
+        <h1 align="center">Hotel Registration Form</h1>
+        <form>
+            <h2>Customer Info</h2>
+            <label for="custname">Customer Name:</label>
+            <input type="text" name="custname" required>
+            <p></p>
+            <label for="checkin">Check-in-Date:</label>
+            <input type="date" name="checkin" required>
+            <p></p>
+            <label for="days">Number of days:</label>
+            <input type="number" id="days" name="days" onchange="calculateTotal()">
+            <p></p>
+            <label for="persons">Total No of persons:</label>
+            <input type="text" name="persons" required>
+            <p></p>
+            <h2>Room Information</h2>
+            <h3>Room Rates:</h3>
+            <ul>
+                <li>Delux Room:2500/-</li>
+                <li>Suite Room:4000/-</li>
+            </ul>
+            <h3>Amenties cost</h3>
+            <ul>
+                <li>Ac:1000/-</li>
+                <li>Locker:300/-</li>
+            </ul>
+            <h4>Now select your Room & Amentie based on above Details</h4>
+            Room Type:
+            <select>
+                <option>Delux Room</option>
+                <option>Suite Room</option>
+            </select>
+            <p></p>
+            Amenities:
+            <select>
+                <option>AC</option>
+                <option>Locker</option>
+            </select>
+            <p></p>
+            <label for="roomRate">Room Rate:</label>
+            <input type="number" id="roomRate" name="roomRate" onchange="calculateTotal()">
+            <p></p>
+            <label for="amentiecost">Amentie cost:</label>
+            <input type="number" id="amentiecost" name="amentiecost" onchange="calculateTotal()">
+            <p></p>
+            <h2>Advance Payment</h2>
+            <label for="Advance">Advance Amount:</label>
+            <input type="number" id="Advance" name="Advance" onchange="calculateTotal()" required>
+            
+            <p></p>
+            <h2>Balance Amount</h2>
+            <label for="balance">Balance Amount:</label>
+            <input type="number" id="balance" name="balance" readonly>
+            <p></p>
+            <h2>Total cost Calculation</h2>
+            <label for="totalRoomCost">Total Room Cost:</label>
+            <input type="text" id="totalRoomCost" name="totalRoomCost" readonly></br></br>
+            <label for="totalamentiecost">Total  Amentie Cost:</label>
+            <input type="text" id="totalamentiecost" name="totalamentiecost" readonly></br></br>
+            <p></p>
+            <label for="totalcost">Total Cost:</label>
+            <input type="text" id="totalcost" name="totalcost" readonly></br></br>
+            <p></p>
+            <h2>Additional Charges</h2>
+            <ul> 
+                <li>Upto 2 peaple:No change in cost</li>
+                <li>Per Day cost for Extra Person:1000/-</li>
+            </ul>
+            </br>
+            </br>
+            <input type="submit"></br>
+        </form>
+        
+    </body>
+</html>
